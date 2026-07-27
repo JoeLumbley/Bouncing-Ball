@@ -21,9 +21,176 @@
 ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ' SOFTWARE.
 
+'Imports System.Drawing.Drawing2D
+
+'Public Class Form1
+
+'    ' -------------------------------
+'    '  Engine State
+'    ' -------------------------------
+'    Private ballX As Double
+'    Private ballY As Double
+'    Private ballDiameter As Integer = 80
+
+'    Private velX As Double
+'    Private velY As Double
+'    Private speed As Double = 450
+
+'    Private physicsTimer As New Timer()
+'    Private sw As New Stopwatch()
+
+'    ' -------------------------------
+'    '  FPS Tracking
+'    ' -------------------------------
+'    Private frameCount As Integer = 0
+'    Private fps As Integer = 0
+'    Private fpsTimer As New Stopwatch()
+
+'    ' -------------------------------
+'    '  GDI Resources
+'    ' -------------------------------
+'    Private ballBrush As SolidBrush
+'    Private fpsBrush As SolidBrush
+'    Private fpsFont As Font
+
+'    Public Sub New()
+'        InitializeComponent()
+
+'        Me.SetStyle(ControlStyles.AllPaintingInWmPaint Or
+'                    ControlStyles.UserPaint Or
+'                    ControlStyles.OptimizedDoubleBuffer, True)
+
+'        Me.BackColor = Color.Black
+
+'        ' Center ball
+'        ballX = (ClientSize.Width - ballDiameter) / 2
+'        ballY = (ClientSize.Height - ballDiameter) / 2
+
+'        ' Random direction
+'        Dim rnd As New Random()
+'        Dim angle As Double = rnd.NextDouble() * Math.PI * 2
+'        velX = Math.Cos(angle) * speed
+'        velY = Math.Sin(angle) * speed
+
+'        ' Physics at ~60 FPS
+'        physicsTimer.Interval = 15
+'        AddHandler physicsTimer.Tick, AddressOf PhysicsTick
+'        physicsTimer.Start()
+
+'        sw.Start()
+'        fpsTimer.Start()
+'    End Sub
 
 
-Imports System.ComponentModel
+
+'    Protected Overrides Sub OnLoad(e As EventArgs)
+'        MyBase.OnLoad(e)
+
+'        ballBrush = New SolidBrush(Color.DeepSkyBlue)
+'        fpsBrush = New SolidBrush(Color.White)
+'        fpsFont = New Font("Segoe UI", 14, FontStyle.Bold)
+'    End Sub
+
+
+'    ' -------------------------------
+'    '  Physics Loop (Fixed Timestep)
+'    ' -------------------------------
+'    Private Sub PhysicsTick(sender As Object, e As EventArgs)
+'        Dim dt As Double = sw.Elapsed.TotalSeconds
+'        sw.Restart()
+
+'        ballX += velX * dt
+'        ballY += velY * dt
+
+'        ' Horizontal bounce
+'        If ballX <= 0 Then
+'            ballX = 0
+'            velX = Math.Abs(velX)
+'        ElseIf ballX >= ClientSize.Width - ballDiameter Then
+'            ballX = ClientSize.Width - ballDiameter
+'            velX = -Math.Abs(velX)
+'        End If
+
+'        ' Vertical bounce
+'        If ballY <= 0 Then
+'            ballY = 0
+'            velY = Math.Abs(velY)
+'        ElseIf ballY >= ClientSize.Height - ballDiameter Then
+'            ballY = ClientSize.Height - ballDiameter
+'            velY = -Math.Abs(velY)
+'        End If
+
+'        Invalidate()
+'    End Sub
+
+'    ' -------------------------------
+'    '  Rendering
+'    ' -------------------------------
+'    Protected Overrides Sub OnPaint(e As PaintEventArgs)
+'        MyBase.OnPaint(e)
+
+'        e.Graphics.CompositingMode = CompositingMode.SourceOver
+'        e.Graphics.SmoothingMode = SmoothingMode.AntiAlias
+'        e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality
+
+'        ' Ball
+'        e.Graphics.FillEllipse(ballBrush,
+'                               CInt(ballX),
+'                               CInt(ballY),
+'                               ballDiameter,
+'                               ballDiameter)
+
+'        UpdateFPS()
+'        e.Graphics.DrawString($"FPS: {fps}", fpsFont, fpsBrush, 10, 10)
+'    End Sub
+
+'    Protected Overrides Sub OnPaintBackground(pevent As PaintEventArgs)
+'        ' Suppress background flicker
+'        ' We paint everything manually
+'    End Sub
+
+'    ' -------------------------------
+'    '  FPS Counter
+'    ' -------------------------------
+'    Private Sub UpdateFPS()
+'        frameCount += 1
+
+'        If fpsTimer.ElapsedMilliseconds >= 1000 Then
+'            fps = frameCount
+'            frameCount = 0
+'            fpsTimer.Restart()
+'        End If
+'    End Sub
+
+'    ' -------------------------------
+'    '  Cleanup
+'    ' -------------------------------
+
+'    'Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+
+'    '    ballBrush?.Dispose()
+'    '    fpsBrush?.Dispose()
+'    '    fpsFont?.Dispose()
+
+'    'End Sub
+
+
+
+'    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+'        ballBrush?.Dispose()
+'        fpsBrush?.Dispose()
+'        fpsFont?.Dispose()
+'        physicsTimer?.Dispose()
+'    End Sub
+
+
+
+
+'End Class
+
+
+
+
 Imports System.Drawing.Drawing2D
 
 Public Class Form1
@@ -52,9 +219,9 @@ Public Class Form1
     ' -------------------------------
     '  GDI Resources
     ' -------------------------------
-    Private ballBrush As New SolidBrush(Color.DeepSkyBlue)
-    Private fpsBrush As New SolidBrush(Color.White)
-    Private fpsFont As New Font("Segoe UI", 14, FontStyle.Bold)
+    Private ballBrush As SolidBrush
+    Private fpsBrush As SolidBrush
+    Private fpsFont As Font
 
     Public Sub New()
         InitializeComponent()
@@ -63,6 +230,7 @@ Public Class Form1
                     ControlStyles.UserPaint Or
                     ControlStyles.OptimizedDoubleBuffer, True)
 
+        Me.DoubleBuffered = True
         Me.BackColor = Color.Black
 
         ' Center ball
@@ -78,10 +246,20 @@ Public Class Form1
         ' Physics at ~60 FPS
         physicsTimer.Interval = 15
         AddHandler physicsTimer.Tick, AddressOf PhysicsTick
-        physicsTimer.Start()
 
         sw.Start()
         fpsTimer.Start()
+    End Sub
+
+    Protected Overrides Sub OnLoad(e As EventArgs)
+        MyBase.OnLoad(e)
+
+        ' Create GDI resources here (cleaner than field-level)
+        ballBrush = New SolidBrush(Color.DeepSkyBlue)
+        fpsBrush = New SolidBrush(Color.White)
+        fpsFont = New Font("Segoe UI", 14, FontStyle.Bold)
+
+        physicsTimer.Start()
     End Sub
 
     ' -------------------------------
@@ -90,6 +268,9 @@ Public Class Form1
     Private Sub PhysicsTick(sender As Object, e As EventArgs)
         Dim dt As Double = sw.Elapsed.TotalSeconds
         sw.Restart()
+
+        ' Clamp dt to avoid physics explosions on lag spikes
+        dt = Math.Min(dt, 0.05)
 
         ballX += velX * dt
         ballY += velY * dt
@@ -157,13 +338,11 @@ Public Class Form1
     ' -------------------------------
     '  Cleanup
     ' -------------------------------
-
-    Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         ballBrush?.Dispose()
         fpsBrush?.Dispose()
         fpsFont?.Dispose()
-
+        physicsTimer?.Dispose()
     End Sub
 
 End Class
