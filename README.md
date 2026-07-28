@@ -5,12 +5,11 @@ This application displays a single ball that moves smoothly across the screen us
 
 
 
+<img width="1920" height="1080" alt="005" src="https://github.com/user-attachments/assets/f1ec88e1-21b1-4f84-9afb-eabb017ae2a2" />
 
 
 
 
-
-<img width="1920" height="1080" alt="004" src="https://github.com/user-attachments/assets/cbf6a822-894c-4120-ade1-69ffc0522e93" />
 
 
 
