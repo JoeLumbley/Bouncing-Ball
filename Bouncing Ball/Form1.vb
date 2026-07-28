@@ -128,8 +128,6 @@ Public Class Form1
             velY = -Math.Abs(velY)
         End If
 
-
-
         ' Record current position for trail
         trail.Add(New PointF(CSng(ballX), CSng(ballY)))
 
@@ -137,9 +135,6 @@ Public Class Form1
         If trail.Count > trailLength Then
             trail.RemoveAt(0)
         End If
-
-
-
 
         Invalidate()
     End Sub
@@ -154,50 +149,37 @@ Public Class Form1
         e.Graphics.SmoothingMode = SmoothingMode.AntiAlias
         e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality
 
-
-
         ' Draw fading trail
-        'Dim alphaStep As Integer = 255 \ trailLength
-        Dim alphaStep As Integer = 32 \ trailLength
-
         For i As Integer = 0 To trail.Count - 1
-            Dim alpha As Integer = alphaStep * i
+
+            Dim t As Double = i / trailLength
+            Dim alpha As Integer = CInt(32 * Math.Pow(t, 2))
             If alpha > 255 Then alpha = 255
 
-            Using trailBrush As New SolidBrush(Color.FromArgb(alpha, 0, 191, 255)) ' DeepSkyBlue-ish
+            Using trailBrush As New SolidBrush(Color.FromArgb(alpha, 0, 191, 255))
                 Dim p As PointF = trail(i)
-                Dim size As Integer = ballDiameter - (trailLength - i) * 2 ' Shrinks over time
+                Dim size As Integer = ballDiameter - (trailLength - i) * 2
                 If size < 10 Then size = 10
 
-                'e.Graphics.FillEllipse(trailBrush,
-                '               p.X + (ballDiameter - size) / 2,
-                '               p.Y + (ballDiameter - size) / 2,
-                '               size,
-                '               size)
-
                 e.Graphics.FillEllipse(trailBrush,
-                                       CSng(p.X + (ballDiameter - size) / 2),
-                                       CSng(p.Y + (ballDiameter - size) / 2),
-                                       CSng(size),
-                                       CSng(size))
-
+                           CSng(p.X + (ballDiameter - size) / 2),
+                           CSng(p.Y + (ballDiameter - size) / 2),
+                           CSng(size),
+                           CSng(size))
             End Using
+
         Next
-
-
-
-
-
 
         ' Ball
         e.Graphics.FillEllipse(ballBrush,
-                               CInt(ballX),
-                               CInt(ballY),
-                               ballDiameter,
-                               ballDiameter)
+                               CSng(ballX),
+                               CSng(ballY),
+                               CSng(ballDiameter),
+                               CSng(ballDiameter))
 
         UpdateFPS()
         e.Graphics.DrawString($"FPS: {fps}", fpsFont, fpsBrush, 10, 10)
+
     End Sub
 
     Protected Overrides Sub OnPaintBackground(pevent As PaintEventArgs)
