@@ -9,7 +9,12 @@ This application displays a single ball that moves smoothly across the screen us
 
 
 
-<img width="1147" height="796" alt="003" src="https://github.com/user-attachments/assets/cfac7e83-bc26-4b42-8a80-2fcbc57d6848" />
+
+<img width="1920" height="1080" alt="004" src="https://github.com/user-attachments/assets/cbf6a822-894c-4120-ade1-69ffc0522e93" />
+
+
+
+
 
 
 The movement is updated inside a high‑frequency timer, which calculates how much real time has passed between frames. This ensures the animation stays smooth and consistent even if the frame rate changes.
