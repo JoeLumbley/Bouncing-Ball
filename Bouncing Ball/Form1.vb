@@ -84,6 +84,7 @@ Public Class Form1
 
         sw.Start()
         fpsTimer.Start()
+
     End Sub
 
     Protected Overrides Sub OnLoad(e As EventArgs)
@@ -95,12 +96,14 @@ Public Class Form1
         fpsFont = New Font("Segoe UI", 14, FontStyle.Bold)
 
         physicsTimer.Start()
+
     End Sub
 
     ' -------------------------------
     '  Physics Loop (Fixed Timestep)
     ' -------------------------------
     Private Sub PhysicsTick(sender As Object, e As EventArgs)
+
         Dim dt As Double = sw.Elapsed.TotalSeconds
         sw.Restart()
 
@@ -137,6 +140,7 @@ Public Class Form1
         End If
 
         Invalidate()
+
     End Sub
 
     ' -------------------------------
@@ -183,14 +187,17 @@ Public Class Form1
     End Sub
 
     Protected Overrides Sub OnPaintBackground(pevent As PaintEventArgs)
+
         ' Suppress background flicker
         ' We paint everything manually
+
     End Sub
 
     ' -------------------------------
     '  FPS Counter
     ' -------------------------------
     Private Sub UpdateFPS()
+
         frameCount += 1
 
         If fpsTimer.ElapsedMilliseconds >= 1000 Then
@@ -198,16 +205,19 @@ Public Class Form1
             frameCount = 0
             fpsTimer.Restart()
         End If
+
     End Sub
 
     ' -------------------------------
     '  Cleanup
     ' -------------------------------
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+
         ballBrush?.Dispose()
         fpsBrush?.Dispose()
         fpsFont?.Dispose()
         physicsTimer?.Dispose()
+
     End Sub
 
 End Class
