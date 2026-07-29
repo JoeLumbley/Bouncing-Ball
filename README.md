@@ -87,6 +87,8 @@ The engine stores everything it needs to simulate and draw the ball:
 
 These variables form the backbone of the animation.
 
+[Engine State — Core Variables](#engine-state---core-variables)
+
 ---
 
 # ⚙️ **2. Initialization (Constructor + OnLoad)**
