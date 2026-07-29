@@ -2155,3 +2155,209 @@ It’s exactly the kind of diagnostic tool you want in a real‑time animation.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+---
+---
+---
+
+
+
+
+---
+
+
+## *OnResize — Keeping the ball and trail consistent when the window changes size*
+
+This method runs **every time the form is resized** — whether the user drags the window edges, maximizes it, or restores it.  
+Its job is to keep the ball inside the new bounds and ensure the trail geometry stays correct.
+
+---
+
+```vb
+Protected Overrides Sub OnResize(e As EventArgs)
+```
+
+Overrides the form’s built‑in resize handler.  
+This fires whenever the form’s client area changes size.
+
+---
+
+```vb
+MyBase.OnResize(e)
+```
+
+Calls the base class version of `OnResize`.  
+This ensures WinForms performs its normal layout and resize behavior before your custom logic runs.
+
+---
+
+### 🛑 Ignore Resize Until Resources Exist
+
+```vb
+If trailSizes Is Nothing OrElse trailOffsets Is Nothing Then
+    Return
+End If
+```
+
+This prevents errors during startup.
+
+#### Why this matters:
+- `OnResize` can fire **before** `OnLoad`  
+- At that moment, `trailSizes` and `trailOffsets` are still `Nothing`  
+- Accessing them would cause a crash  
+
+So this guard simply exits early until the arrays are initialized.
+
+In short: **Don’t run resize logic until the trail system is ready.**
+
+---
+
+### 🎯 Clamp Ball Inside New Bounds
+
+When the window shrinks, the ball might suddenly be outside the visible area.  
+These checks snap it back inside.
+
+---
+
+```vb
+If ballPos.X > ClientSize.Width - ballDiameter Then
+    ballPos.X = ClientSize.Width - ballDiameter
+End If
+```
+
+#### Horizontal clamp
+- If the ball’s right edge is outside the new width  
+- Move it back inside so it remains visible  
+
+---
+
+```vb
+If ballPos.Y > ClientSize.Height - ballDiameter Then
+    ballPos.Y = ClientSize.Height - ballDiameter
+End If
+```
+
+#### Vertical clamp
+- Same logic, but for the bottom edge  
+
+In short: **Resizing the window never hides the ball.**
+
+---
+
+### 📏 Recompute Trail Offsets
+
+```vb
+For i As Integer = 0 To trailLength - 1
+    Dim size As Integer = trailSizes(i)
+    trailOffsets(i) = CSng((ballDiameter - size) / 2)
+Next
+```
+
+Each trail circle is smaller than the main ball.  
+To keep them centered, you compute an offset:
+
+```
+(ballDiameter - size) / 2
+```
+
+This ensures:
+
+- every trail circle stays perfectly centered  
+- resizing the window doesn’t distort the trail alignment  
+- the visual taper remains correct  
+
+In short: **Recalculate the centering math for each trail segment.**
+
+---
+
+### 🎨 Request a Redraw
+
+```vb
+Invalidate()
+```
+
+Tells WinForms:
+
+> “The window changed — redraw everything.”
+
+This ensures the ball and trail update immediately after resizing.
+
+---
+
+```vb
+End Sub
+```
+
+Ends the resize‑handling routine.
+
+---
+
+### 🧠 Why this resize logic is important
+
+Our animation engine stays stable because:
+
+- it avoids crashes during early resize events  
+- it clamps the ball inside the new bounds  
+- it recalculates trail geometry  
+- it triggers a redraw so the scene updates instantly  
+
+This is exactly how you build a robust real‑time animation system in WinForms.
+
+---
+
+
+
+
+
+
