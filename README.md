@@ -424,7 +424,7 @@ Private trailOffsets As Single()
 
 ---
 
-## *Initialization - Constructor + OnLoad*
+## *Initialization - Constructor*
 
 ```vb
 Public Sub New()
