@@ -89,6 +89,8 @@ These variables form the backbone of the animation.
 
 [Engine State - Core Variables Walkthrough](#engine-state---core-variables)
 
+
+
 ---
 
 # ⚙️ **2. Initialization (Constructor + OnLoad)**
@@ -109,6 +111,9 @@ The engine initializes itself in two phases:
 - Starts the physics loop  
 
 This ensures the engine is fully prepared before the first frame is drawn.
+
+
+[Initialization - Constructor + Onload Walkthrough](#initialization---constructor--onload)
 
 ---
 
