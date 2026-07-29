@@ -1730,6 +1730,208 @@ Our FPS counter is:
 It’s a perfect example of how real‑time diagnostics work in animation engines.
 
 ---
+---
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+## *OnPaintBackground — Preventing flicker by suppressing default background painting*
+
+Windows Forms normally repaints the background before drawing the foreground.  
+For static apps, that’s fine.  
+For **real‑time animation**, it causes flicker — especially when drawing fast‑moving objects.
+
+This override disables that behavior.
+
+---
+
+```vb
+Protected Overrides Sub OnPaintBackground(pevent As PaintEventArgs)
+```
+
+This overrides the form’s built‑in background‑painting method.  
+WinForms calls this **before** `OnPaint` unless you suppress it.
+
+---
+
+```vb
+' Suppress background flicker
+```
+
+A comment explaining the purpose of this override:
+
+- Prevent background clearing  
+- Prevent unnecessary redraws  
+- Prevent flicker during animation  
+- Allow our own double‑buffering to handle everything
+
+This is a classic technique used in game loops and custom renderers.
+
+---
+
+```vb
+End Sub
+```
+
+Ends the override.
+
+---
+
+### 🧠 Why suppressing background painting matters
+
+By default, WinForms does this every frame:
+
+1. Clear background  
+2. Paint background  
+3. Paint controls  
+4. Paint your custom graphics  
+
+When animating:
+
+- Step 1 creates a flash  
+- Step 2 creates a second flash  
+- Step 4 draws your ball  
+- The result is **visible flicker**, especially at high speeds
+
+Our animation engine already uses:
+
+- `OptimizedDoubleBuffer`  
+- `DoubleBuffered = True`  
+- custom `OnPaint`  
+- no child controls  
+
+So background painting is **not needed**.
+
+Suppressing it gives you:
+
+- perfectly smooth animation  
+- no flashing  
+- no tearing  
+- no redundant work  
+
+This is exactly how professional WinForms animation engines handle rendering.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
