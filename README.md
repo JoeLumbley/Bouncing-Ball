@@ -58,14 +58,6 @@ It’s a introduction to game programming concepts using Windows Forms and VB.NE
 
 
 
----
----
----
----
----
-
-
-
 
 
 ---
@@ -250,27 +242,17 @@ This animation engine works beautifully because it follows real graphics‑engin
 It’s small, readable, and perfect for learning how real‑time animation works.
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
----
----
----
----
+
+
+
+
+
+
+
+
+
+
 
 
 
