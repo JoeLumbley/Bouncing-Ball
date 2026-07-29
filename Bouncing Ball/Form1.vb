@@ -21,8 +21,6 @@
 ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ' SOFTWARE.
 
-
-
 Imports System.Drawing.Drawing2D
 
 Public Class Form1
@@ -243,6 +241,34 @@ Public Class Form1
             fpsTimer.Restart()
         End If
     End Sub
+
+    Protected Overrides Sub OnResize(e As EventArgs)
+        MyBase.OnResize(e)
+
+        ' Ignore resize until resources are initialized
+        If trailSizes Is Nothing OrElse trailOffsets Is Nothing Then
+            Return
+        End If
+
+        ' Clamp ball inside new bounds
+        If ballPos.X > ClientSize.Width - ballDiameter Then
+            ballPos.X = ClientSize.Width - ballDiameter
+        End If
+
+        If ballPos.Y > ClientSize.Height - ballDiameter Then
+            ballPos.Y = ClientSize.Height - ballDiameter
+        End If
+
+        ' Recompute offsets
+        For i As Integer = 0 To trailLength - 1
+            Dim size As Integer = trailSizes(i)
+            trailOffsets(i) = CSng((ballDiameter - size) / 2)
+        Next
+
+        Invalidate()
+    End Sub
+
+
 
     ' -------------------------------
     '  Cleanup
