@@ -196,7 +196,7 @@ Even though you already set `OptimizedDoubleBuffer`, this property ensures the f
 ---
 
 ```vb
-### `Me.BackColor = Color.Black`
+Me.BackColor = Color.Black
 ```
 
 Sets the form’s background color to black — the canvas for your animation.
