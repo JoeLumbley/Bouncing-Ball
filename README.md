@@ -1416,7 +1416,134 @@ This is exactly how you build a professional‑looking motion trail in WinForms.
 
 
 
+---
+---
+---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+## *DrawBall — Rendering the main ball at its current position*
+
+This method draws the ball itself.  
+It’s intentionally simple: one brush, one ellipse, one position.  
+All the complexity (physics, trail, smoothing) happens elsewhere — this is the final visual step.
+
+---
+
+```vb
+Private Sub DrawBall(g As Graphics)
+```
+
+Begins the ball‑rendering routine.  
+The `Graphics` object `g` is the drawing surface for this frame.
+
+---
+
+```vb
+g.FillEllipse(ballBrush,
+              ballPos.X,
+              ballPos.Y,
+              ballDiameter,
+              ballDiameter)
+```
+
+This single line draws the ball:
+
+### **ballBrush**
+- The solid brush created in `OnLoad`
+- Uses the color `DeepSkyBlue`
+- No transparency — the ball is fully opaque
+
+### **ballPos.X / ballPos.Y**
+- The current position of the ball
+- Updated every physics tick
+- Stored as floating‑point values for smooth motion
+
+### **ballDiameter**
+- Width and height of the ellipse
+- Because width = height, the ellipse is a perfect circle
+
+### What this line does visually:
+- Draws a filled circle  
+- At the ball’s current position  
+- Using the ball’s color  
+- With the ball’s size  
+
+In short: **This is the ball you see bouncing around the screen.**
+
+---
+
+```vb
+End Sub
+```
+
+Ends the ball‑rendering routine.
+
+---
+
+### 🧠 Why this method is so simple
+
+All the heavy lifting happens elsewhere:
+
+- PhysicsTick moves the ball  
+- HandleCollisions keeps it inside the window  
+- UpdateTrail records its history  
+- DrawTrail renders the fading trail  
+- OnPaint sets up high‑quality rendering modes  
+
+By the time `DrawBall` runs, everything is ready — it just draws the final circle.
+
+This separation of responsibilities is exactly what makes our animation engine clean and easy to extend.
+
+---
 
 
 
