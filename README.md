@@ -351,6 +351,12 @@ In short: **This is the main window of your application, and all your animation 
 
 ---
 
+
+## *Engine State - Core Variables*
+
+
+
+
 ```vb
 ' -------------------------------
 '  Engine State
@@ -429,7 +435,7 @@ Private trailOffsets As Single()
 
 ---
 
-
+## *Initialization - Constructor + OnLoad*
 
 ```vb
 Public Sub New()
