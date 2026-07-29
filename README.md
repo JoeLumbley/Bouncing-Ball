@@ -1831,6 +1831,10 @@ Suppressing it gives you:
 This is exactly how professional WinForms animation engines handle rendering.
 
 ---
+---
+---
+---
+---
 
 
 
@@ -1881,6 +1885,200 @@ This is exactly how professional WinForms animation engines handle rendering.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+ 
+## *UpdateFPS — Measuring and updating the frames‑per‑second value*
+
+This method keeps track of how many frames were drawn in the last second.  
+It’s called once per frame (inside `DrawFPS`), and updates the FPS value once every 1000 ms.
+
+---
+
+```vb
+Private Sub UpdateFPS()
+```
+
+Begins the FPS‑update routine.  
+This method is called every time the screen is redrawn.
+
+---
+
+### 🔢 Count Each Frame
+
+```vb
+frameCount += 1
+```
+
+Every time `UpdateFPS` runs, one frame has just been rendered.  
+So we increment the frame counter.
+
+- If the app is running at 60 FPS → this line runs 60 times per second  
+- If the app is running at 120 FPS → it runs 120 times per second  
+
+In short: **This counts how many frames occurred in the current one‑second window.**
+
+---
+
+### ⏱️ Check If One Second Has Passed
+
+```vb
+If fpsTimer.ElapsedMilliseconds >= 1000 Then
+```
+
+`fpsTimer` is a stopwatch that started in the constructor.
+
+This line checks:
+
+> Has at least 1000 ms (1 second) passed since the last FPS update?
+
+If **yes**, it’s time to compute a new FPS value.
+
+---
+
+### 📊 Update the FPS Value
+
+```vb
+fps = frameCount
+```
+
+The number of frames counted in the last second becomes the FPS value.
+
+Examples:
+
+- If `frameCount = 66` → FPS is 66  
+- If `frameCount = 120` → FPS is 120  
+
+This gives a real‑time measurement of how fast the animation is running.
+
+---
+
+### 🔄 Reset for the Next Second
+
+```vb
+frameCount = 0
+fpsTimer.Restart()
+```
+
+Two things happen:
+
+### 1. Reset the frame counter  
+Start counting frames for the next one‑second window.
+
+### 2. Restart the stopwatch  
+Begin timing the next second.
+
+In short: **Every second, the FPS counter resets and starts fresh.**
+
+---
+
+```vb
+End If
+End Sub
+```
+
+Ends the FPS‑update routine.
+
+---
+
+### 🧠 Why this FPS system is ideal
+
+Our FPS counter is:
+
+- **simple** — easy to understand  
+- **accurate** — uses a stopwatch instead of relying on frame timing  
+- **efficient** — updates only once per second  
+- **clean** — no heavy math or averaging needed  
+
+It’s exactly the kind of diagnostic tool you want in a real‑time animation.
+
+---
 
 
 
