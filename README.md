@@ -1483,6 +1483,10 @@ This method draws the ball itself.
 It’s intentionally simple: one brush, one ellipse, one position.  
 All the complexity (physics, trail, smoothing) happens elsewhere — this is the final visual step.
 
+
+
+<img width="1918" height="1078" alt="007" src="https://github.com/user-attachments/assets/675a9603-59c3-4187-bef1-b599e6c983e4" />
+
 ---
 
 ```vb
