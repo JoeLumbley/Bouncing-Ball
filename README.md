@@ -104,6 +104,8 @@ The engine initializes itself in two phases:
 - Generates a random direction  
 - Starts the physics and FPS timers  
 
+[Initialization - Constructor Walkthrough](#initialization---constructor)
+
 ### **OnLoad**
 - Creates all GDI+ resources (brushes, fonts)  
 - Preallocates trail brushes  
@@ -113,7 +115,8 @@ The engine initializes itself in two phases:
 This ensures the engine is fully prepared before the first frame is drawn.
 
 
-[Initialization - Constructor + Onload Walkthrough](#initialization---constructor--onload)
+
+
 
 ---
 
