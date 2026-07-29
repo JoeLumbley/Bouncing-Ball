@@ -1563,6 +1563,174 @@ By the time `DrawBall` runs, everything is ready — it just draws the final cir
 This separation of responsibilities is exactly what makes our animation engine clean and easy to extend.
 
 ---
+---
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+## *DrawFPS — Rendering the frames‑per‑second counter*
+
+This method draws the FPS counter in the top‑left corner of the screen.  
+It updates the FPS value once per second, then renders it using our preloaded font and brush.
+
+---
+
+```vb
+Private Sub DrawFPS(g As Graphics)
+```
+
+Begins the FPS‑rendering routine.  
+The `Graphics` object `g` is the drawing surface for this frame.
+
+---
+
+### ⏱️ Update the FPS Value
+
+```vb
+UpdateFPS()
+```
+
+Calls our FPS‑tracking method, which:
+
+- increments the frame counter  
+- checks whether one second has passed  
+- updates the `fps` field  
+- resets the counter for the next second  
+
+This ensures the FPS number is always accurate and refreshed once per second.
+
+In short: **Before drawing the FPS text, make sure the value is up‑to‑date.**
+
+---
+
+### 🎨 Draw the FPS Text
+
+```vb
+g.DrawString($"FPS: {fps}", fpsFont, fpsBrush, 10, 10)
+```
+
+This line draws the FPS counter:
+
+#### **"FPS: {fps}"**
+- A formatted string showing the current FPS value  
+- Example: `"FPS: 66"`
+
+#### **fpsFont**
+- The font created in `OnLoad`  
+- `"Segoe UI", 14pt, Bold`  
+- Clean and readable for UI overlays
+
+#### **fpsBrush**
+- A solid white brush  
+- Ensures the text stands out against the black background
+
+#### **(10, 10)**
+- Draws the text at coordinates `(10, 10)`  
+- Top‑left corner of the window  
+- Slight padding so it doesn’t touch the edges
+
+In short: **This draws a clean, readable FPS counter in the corner of the screen.**
+
+---
+
+```vb
+End Sub
+```
+
+Ends the FPS‑rendering routine.
+
+---
+
+### 🧠 Why this FPS system works well
+
+Our FPS counter is:
+
+- **lightweight** — only updates once per second  
+- **accurate** — uses a stopwatch instead of relying on frame timing  
+- **non‑intrusive** — drawn last so it overlays the scene  
+- **beginner‑friendly** — easy to understand and extend  
+
+It’s a perfect example of how real‑time diagnostics work in animation engines.
+
+---
+
 
 
 
