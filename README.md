@@ -72,7 +72,7 @@ Below is the full architecture broken into its major subsystems.
 
 ---
 
-# 🧱 ** Engine State (Core Variables)**
+# 🧱 **Engine State (Core Variables)**
 
 The engine stores everything it needs to simulate and draw the ball:
 
@@ -93,7 +93,7 @@ These variables form the backbone of the animation.
 
 ---
 
-# ⚙️ ** Initialization (Constructor + OnLoad)**
+# ⚙️ **Initialization (Constructor + OnLoad)**
 
 The engine initializes itself in two phases:
 
@@ -117,7 +117,7 @@ This ensures the engine is fully prepared before the first frame is drawn.
 
 ---
 
-# ⏱️ ** Physics Loop (Fixed Timestep)**
+# ⏱️ **Physics Loop (Fixed Timestep)**
 
 The physics loop runs every 15 ms (~66 FPS):
 
@@ -133,7 +133,7 @@ This loop is the **heartbeat** of the animation.
 
 ---
 
-# 🧱 ** Collision Handling**
+# 🧱 **Collision Handling**
 
 The engine checks for collisions with all four window edges:
 
@@ -145,7 +145,7 @@ This creates clean, predictable bouncing behavior.
 
 ---
 
-# 🟦 ** Trail System**
+# 🟦 **Trail System**
 
 The trail system records the ball’s movement history:
 
@@ -162,7 +162,7 @@ The result is a smooth, tapered comet‑like trail.
 
 ---
 
-# 🎨 ** Rendering Pipeline**
+# 🎨 **Rendering Pipeline**
 
 Rendering happens inside `OnPaint`:
 
@@ -189,7 +189,7 @@ This is essential for smooth animation.
 
 ---
 
-# 📊 ** FPS Counter**
+# 📊 **FPS Counter**
 
 The FPS system measures how many frames occur per second:
 
@@ -207,7 +207,7 @@ This gives real‑time performance feedback.
 
 ---
 
-# 🖥️ ** Resize Handling**
+# 🖥️ **Resize Handling**
 
 When the window is resized:
 
@@ -220,7 +220,7 @@ This keeps the engine stable and visually correct during window resizing.
 
 ---
 
-# 🧹 ** Cleanup**
+# 🧹 **Cleanup**
 
 When the form closes:
 
@@ -233,7 +233,7 @@ This prevents memory leaks and cleans up unmanaged GDI resources.
 
 ---
 
-# 🧠 ** Why This Engine Is So Effective**
+# 🧠 **Why This Engine Is So Effective**
 
 This animation engine works beautifully because it follows real graphics‑engine principles:
 
