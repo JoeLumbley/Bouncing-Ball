@@ -1124,11 +1124,17 @@ It’s part of a “best practice” set of rendering flags for GDI+ animation.
 
 ### 🎨 Draw the Scene
 
+
+
 ```vb
 DrawTrail(g)
 DrawBall(g)
 DrawFPS(g)
 ```
+
+<img width="1920" height="1080" alt="009" src="https://github.com/user-attachments/assets/cf1cd1c0-9c59-44d5-9003-67bd98545351" />
+
+
 
 These three calls render the entire frame:
 
