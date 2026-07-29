@@ -303,7 +303,7 @@ It’s small, readable, and perfect for learning how real‑time animation works
 ---
 
 
-# 🔵 Code Walkthrough  
+# Code Walkthrough  
 *A line‑by‑line explanation of how this animation works and why we built it this way.*
 
 This project shows how to animate a bouncing ball in Windows Forms using smooth motion, trails, and an FPS counter.  
