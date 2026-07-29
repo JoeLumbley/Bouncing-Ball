@@ -767,7 +767,7 @@ This collision system is:
 - **stable** — avoids tunneling thanks to dt clamping  
 - **clean** — uses `Math.Abs` to guarantee correct bounce direction  
 
-It’s exactly the kind of logic beginners can understand while still feeling “real” in motion.
+It’s exactly the kind of logic that is easy to understand while still feeling “real” in motion.
 
 ---
 
