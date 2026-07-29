@@ -1690,7 +1690,7 @@ This line draws the FPS counter:
 
 #### **"FPS: {fps}"**
 - A formatted string showing the current FPS value  
-- Example: `"FPS: 66"`
+- Example: `"FPS: 64"`
 
 #### **fpsFont**
 - The font created in `OnLoad`  
