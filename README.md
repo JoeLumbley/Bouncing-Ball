@@ -2032,7 +2032,7 @@ The number of frames counted in the last second becomes the FPS value.
 
 Examples:
 
-- If `frameCount = 66` → FPS is 66  
+- If `frameCount = 64` → FPS is 64  
 - If `frameCount = 120` → FPS is 120  
 
 This gives a real‑time measurement of how fast the animation is running.
