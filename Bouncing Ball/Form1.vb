@@ -182,7 +182,6 @@ Public Class Form1
         g.PixelOffsetMode = PixelOffsetMode.HighQuality
         g.InterpolationMode = InterpolationMode.HighQualityBicubic
 
-
         DrawTrail(g)
         DrawBall(g)
         DrawFPS(g)
