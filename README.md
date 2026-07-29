@@ -72,7 +72,7 @@ Below is the full architecture broken into its major subsystems.
 
 ---
 
-# 🧱 **Engine State (Core Variables)**
+# ⏱️ **Engine State (Core Variables)**
 
 The engine stores everything it needs to simulate and draw the ball:
 
