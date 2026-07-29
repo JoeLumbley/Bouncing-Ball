@@ -180,6 +180,8 @@ Public Class Form1
         g.CompositingMode = CompositingMode.SourceOver
         g.SmoothingMode = SmoothingMode.AntiAlias
         g.PixelOffsetMode = PixelOffsetMode.HighQuality
+        g.InterpolationMode = InterpolationMode.HighQualityBicubic
+
 
         DrawTrail(g)
         DrawBall(g)
@@ -194,7 +196,7 @@ Public Class Form1
 
             ' Smooth exponential fade
             Dim t As Double = i / trailLength
-            Dim alpha As Integer = CInt(80 * t * t)
+            Dim alpha As Integer = CInt(32 * t * t)
             If alpha > 255 Then alpha = 255
 
             trailBrushes(i).Color = Color.FromArgb(alpha, 0, 191, 255)
@@ -267,8 +269,6 @@ Public Class Form1
 
         Invalidate()
     End Sub
-
-
 
     ' -------------------------------
     '  Cleanup
