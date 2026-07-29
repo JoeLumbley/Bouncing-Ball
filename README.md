@@ -1262,7 +1262,7 @@ The trail is drawn **before** the ball so it appears underneath it.
 Each trail segment is a smaller, more transparent circle, creating a smooth fading effect.
 
 
-<img width="1918" height="1078" alt="006" src="https://github.com/user-attachments/assets/fd34eb23-66c7-4dc2-bd4b-e62c7695b190" />
+<img width="1918" height="1078" alt="007" src="https://github.com/user-attachments/assets/d7c6ceaf-709c-4150-ba79-cdac37b4e326" />
 
 ---
 
