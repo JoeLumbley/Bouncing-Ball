@@ -656,7 +656,7 @@ Marks the end of the physics update loop.
 ---
 
 
-## *HandleCollisions — Keeping the ball inside the window and bouncing cleanly*
+## *HandleCollisions - Keeping the ball inside the window and bouncing cleanly*
 
 This method checks whether the ball has hit any of the four edges of the window.  
 If it has, the ball is repositioned and its velocity is flipped so it bounces back.
