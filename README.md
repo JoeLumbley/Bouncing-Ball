@@ -1132,7 +1132,6 @@ DrawBall(g)
 DrawFPS(g)
 ```
 
-<img width="1920" height="1080" alt="009" src="https://github.com/user-attachments/assets/cf1cd1c0-9c59-44d5-9003-67bd98545351" />
 
 
 
@@ -1146,6 +1145,9 @@ Draws the main ball at its current position.
 
 ### **DrawFPS(g)**  
 Draws the FPS counter in the corner.
+
+
+<img width="1920" height="1080" alt="009" src="https://github.com/user-attachments/assets/cf1cd1c0-9c59-44d5-9003-67bd98545351" />
 
 The order matters:
 
