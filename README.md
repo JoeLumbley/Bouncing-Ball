@@ -1024,6 +1024,155 @@ Combined with our precomputed sizes and alpha fading, it produces a **smooth, pr
 
 
 
+---
+
+
+## *OnPaint — Drawing the entire scene every frame*
+
+`OnPaint` is the core rendering function.  
+Every time the form needs to redraw (because `Invalidate()` was called), WinForms calls this method and gives you a `Graphics` object to draw with.
+
+---
+
+```vb
+Protected Overrides Sub OnPaint(e As PaintEventArgs)
+```
+
+Overrides the form’s built‑in painting method.  
+This is where **all custom drawing** for your animation happens.
+
+---
+
+```vb
+MyBase.OnPaint(e)
+```
+
+Calls the base class version of `OnPaint`.  
+This ensures WinForms performs its normal painting behavior before your custom graphics run.
+
+Even though you suppress background painting elsewhere, calling the base method is still good practice.
+
+---
+
+### 🎨 Prepare the Graphics Object
+
+```vb
+Dim g = e.Graphics
+```
+
+Retrieves the `Graphics` object from the `PaintEventArgs`.  
+This object is your drawing canvas — everything you draw goes through `g`.
+
+---
+
+```vb
+g.CompositingMode = CompositingMode.SourceOver
+```
+
+Sets how overlapping graphics are blended.
+
+- **SourceOver** means new pixels are drawn *over* existing ones.
+- This is ideal for trails, transparency, and layered effects.
+
+In short: **Allows smooth alpha blending.**
+
+---
+
+```vb
+g.SmoothingMode = SmoothingMode.AntiAlias
+```
+
+Enables anti‑aliasing:
+
+- Smooth edges  
+- No jagged circles  
+- Professional‑looking graphics  
+
+Perfect for drawing ellipses and curved shapes.
+
+---
+
+```vb
+g.PixelOffsetMode = PixelOffsetMode.HighQuality
+```
+
+Improves pixel alignment:
+
+- Reduces tiny rendering artifacts  
+- Makes circles look cleaner  
+- Helps sub‑pixel drawing look smoother  
+
+This is especially useful because your ball moves in floating‑point space.
+
+---
+
+```vb
+g.InterpolationMode = InterpolationMode.HighQualityBicubic
+```
+
+Controls how scaled images are rendered.
+
+Even though you’re not scaling images here, setting this mode ensures:
+
+- smooth gradients  
+- smooth alpha transitions  
+- high‑quality rendering overall  
+
+It’s part of a “best practice” set of rendering flags for GDI+ animation.
+
+---
+
+### 🎨 Draw the Scene
+
+```vb
+DrawTrail(g)
+DrawBall(g)
+DrawFPS(g)
+```
+
+These three calls render the entire frame:
+
+### **DrawTrail(g)**  
+Draws the fading motion trail behind the ball.
+
+### **DrawBall(g)**  
+Draws the main ball at its current position.
+
+### **DrawFPS(g)**  
+Draws the FPS counter in the corner.
+
+The order matters:
+
+1. **Trail first** → behind the ball  
+2. **Ball second** → on top  
+3. **FPS last** → UI overlay  
+
+This layering creates a clean, readable scene.
+
+---
+
+```vb
+End Sub
+```
+
+Ends the rendering routine.
+
+---
+
+### 🧠 Why this rendering pipeline works
+
+Our rendering setup is:
+
+- **clean** — separated into small draw functions  
+- **efficient** — uses preallocated brushes and precomputed sizes  
+- **high‑quality** — uses all the right GDI+ smoothing modes  
+- **flicker‑free** — thanks to double‑buffering and suppressed background painting  
+
+This is exactly how you build a smooth real‑time animation in WinForms.
+
+---
+
+
 
 
 
