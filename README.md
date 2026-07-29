@@ -292,7 +292,7 @@ Marks the end of the constructor.
 
 
 
-# *OnLoad — Preparing all graphics resources before the animation begins*
+## *OnLoad — Preparing all graphics resources before the animation begins*
 
 `OnLoad` runs **once**, right after the form is created and just before it becomes visible.  
 This is the perfect place to initialize brushes, fonts, trail arrays, and anything that depends on the form’s size.
@@ -317,7 +317,7 @@ This ensures WinForms performs its normal setup before your custom logic runs.
 
 ---
 
-## 🎨 Core GDI Resources
+### 🎨 Core GDI Resources
 
 ```vb
 ballBrush = New SolidBrush(Color.DeepSkyBlue)
@@ -335,7 +335,7 @@ In short: **These are the main tools used to draw your scene.**
 
 ---
 
-## 🟦 Preallocate Trail Brushes
+### 🟦 Preallocate Trail Brushes
 
 ```vb
 trailBrushes = New SolidBrush(trailLength - 1) {}
@@ -364,7 +364,7 @@ In short: **Every trail segment gets its own brush, ready to have its alpha adju
 
 ---
 
-## 📏 Precompute Trail Sizes and Offsets
+### 📏 Precompute Trail Sizes and Offsets
 
 ```vb
 trailSizes = New Integer(trailLength - 1) {}
@@ -413,7 +413,7 @@ In short: **Each trail circle is smaller and centered relative to the ball.**
 
 ---
 
-## ▶️ Start the Physics Engine
+### ▶️ Start the Physics Engine
 
 ```vb
 physicsTimer.Start()
@@ -478,7 +478,7 @@ Marks the end of the `OnLoad` method.
 
 ---
  
-# *PhysicsTick — The heartbeat of the animation*
+## *PhysicsTick — The heartbeat of the animation*
 
 This method runs every 15 ms (≈66 times per second).  
 It updates the ball’s position, handles collisions, updates the trail, and triggers a redraw.
@@ -494,7 +494,7 @@ Every time the timer fires, this method executes one physics update.
 
 ---
 
-## ⏱️ Measure Delta‑Time (dt)
+### ⏱️ Measure Delta‑Time (dt)
 
 ```vb
 Dim dt As Double = sw.Elapsed.TotalSeconds
@@ -512,7 +512,7 @@ In short: **dt = time since last update.**
 
 ---
 
-# 🛑 Clamp dt (Safety Against Lag Spikes)
+### 🛑 Clamp dt (Safety Against Lag Spikes)
 
 ```vb
 dt = Math.Min(dt, 0.05)
@@ -527,7 +527,7 @@ In short: **Never allow dt to exceed a safe maximum.**
 
 ---
 
-# 🎯 Update Ball Position
+### 🎯 Update Ball Position
 
 ```vb
 ballPos.X += CSng(velX * dt)
@@ -545,7 +545,7 @@ In short: **Move the ball based on velocity and elapsed time.**
 
 ---
 
-# 🧱 Handle Collisions
+### 🧱 Handle Collisions
 
 ```vb
 HandleCollisions()
@@ -564,7 +564,7 @@ In short: **Bounce the ball off the walls.**
 
 ---
 
-# 🟦 Update Trail
+### 🟦 Update Trail
 
 ```vb
 UpdateTrail()
@@ -578,7 +578,7 @@ In short: **Record the ball’s movement history.**
 
 ---
 
-# 🎨 Request a Redraw
+### 🎨 Request a Redraw
 
 ```vb
 Invalidate()
