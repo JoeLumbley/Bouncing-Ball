@@ -292,7 +292,7 @@ Marks the end of the constructor.
 
 
 
-## *OnLoad — Preparing all graphics resources before the animation begins*
+# *OnLoad — Preparing all graphics resources before the animation begins*
 
 `OnLoad` runs **once**, right after the form is created and just before it becomes visible.  
 This is the perfect place to initialize brushes, fonts, trail arrays, and anything that depends on the form’s size.
@@ -317,7 +317,7 @@ This ensures WinForms performs its normal setup before your custom logic runs.
 
 ---
 
-# 🎨 Core GDI Resources
+## 🎨 Core GDI Resources
 
 ```vb
 ballBrush = New SolidBrush(Color.DeepSkyBlue)
@@ -335,7 +335,7 @@ In short: **These are the main tools used to draw your scene.**
 
 ---
 
-# 🟦 Preallocate Trail Brushes
+## 🟦 Preallocate Trail Brushes
 
 ```vb
 trailBrushes = New SolidBrush(trailLength - 1) {}
@@ -364,7 +364,7 @@ In short: **Every trail segment gets its own brush, ready to have its alpha adju
 
 ---
 
-# 📏 Precompute Trail Sizes and Offsets
+## 📏 Precompute Trail Sizes and Offsets
 
 ```vb
 trailSizes = New Integer(trailLength - 1) {}
@@ -413,7 +413,7 @@ In short: **Each trail circle is smaller and centered relative to the ball.**
 
 ---
 
-# ▶️ Start the Physics Engine
+## ▶️ Start the Physics Engine
 
 ```vb
 physicsTimer.Start()
@@ -437,6 +437,172 @@ End Sub
 ```
 
 Marks the end of the `OnLoad` method.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+ 
+# *PhysicsTick — The heartbeat of the animation*
+
+This method runs every 15 ms (≈66 times per second).  
+It updates the ball’s position, handles collisions, updates the trail, and triggers a redraw.
+
+---
+
+```vb
+Private Sub PhysicsTick(sender As Object, e As EventArgs)
+```
+
+This is the event handler for the timer’s `Tick` event.  
+Every time the timer fires, this method executes one physics update.
+
+---
+
+## ⏱️ Measure Delta‑Time (dt)
+
+```vb
+Dim dt As Double = sw.Elapsed.TotalSeconds
+sw.Restart()
+```
+
+- `sw.Elapsed.TotalSeconds`  
+  Reads how much time has passed since the last physics tick.
+- `sw.Restart()`  
+  Resets and starts the stopwatch again for the next tick.
+
+This gives you a **precise delta‑time**, which makes movement smooth even if the timer drifts slightly.
+
+In short: **dt = time since last update.**
+
+---
+
+# 🛑 Clamp dt (Safety Against Lag Spikes)
+
+```vb
+dt = Math.Min(dt, 0.05)
+```
+
+If the app freezes or lags for a moment, `dt` could become very large.  
+Large dt → ball teleports across the screen → breaks physics.
+
+Clamping dt to **0.05 seconds** (50 ms) prevents runaway movement.
+
+In short: **Never allow dt to exceed a safe maximum.**
+
+---
+
+# 🎯 Update Ball Position
+
+```vb
+ballPos.X += CSng(velX * dt)
+ballPos.Y += CSng(velY * dt)
+```
+
+This applies velocity to position:
+
+- `velX * dt` → how far the ball moves horizontally this frame  
+- `velY * dt` → how far the ball moves vertically this frame  
+
+`CSng()` converts the result to `Single` because `PointF` uses `Single` values.
+
+In short: **Move the ball based on velocity and elapsed time.**
+
+---
+
+# 🧱 Handle Collisions
+
+```vb
+HandleCollisions()
+```
+
+Checks whether the ball hit any of the window edges:
+
+- left  
+- right  
+- top  
+- bottom  
+
+If so, it adjusts position and reverses velocity.
+
+In short: **Bounce the ball off the walls.**
+
+---
+
+# 🟦 Update Trail
+
+```vb
+UpdateTrail()
+```
+
+Adds the ball’s current position to the trail list and removes old entries.
+
+This creates the fading motion trail behind the ball.
+
+In short: **Record the ball’s movement history.**
+
+---
+
+# 🎨 Request a Redraw
+
+```vb
+Invalidate()
+```
+
+Tells WinForms:
+
+> “The screen is out of date — please repaint the form.”
+
+This triggers `OnPaint`, which draws:
+
+- the trail  
+- the ball  
+- the FPS counter  
+
+In short: **PhysicsTick updates the world; OnPaint draws it.**
+
+---
+
+```vb
+End Sub
+```
+
+Marks the end of the physics update loop.
 
 ---
 
