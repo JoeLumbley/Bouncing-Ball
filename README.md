@@ -608,6 +608,178 @@ End Sub
 Marks the end of the physics update loop.
 
 ---
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+## *HandleCollisions — Keeping the ball inside the window and bouncing cleanly*
+
+This method checks whether the ball has hit any of the four edges of the window.  
+If it has, the ball is repositioned and its velocity is flipped so it bounces back.
+
+---
+
+```vb
+Private Sub HandleCollisions()
+```
+
+Begins the collision‑handling routine.  
+This is called once per physics update.
+
+---
+
+### 🧱 Horizontal Bounce (Left & Right Walls)
+
+```vb
+If ballPos.X <= 0 Then
+    ballPos.X = 0
+    velX = Math.Abs(velX)
+```
+
+#### **Left wall collision**
+- `ballPos.X <= 0`  
+  The ball’s left edge has reached or passed the left boundary.
+- `ballPos.X = 0`  
+  Snap the ball back inside the window so it doesn’t drift off‑screen.
+- `velX = Math.Abs(velX)`  
+  Ensures the horizontal velocity becomes **positive**, sending the ball to the right.
+
+In short: **If the ball hits the left wall, push it right.**
+
+---
+
+```vb
+ElseIf ballPos.X >= ClientSize.Width - ballDiameter Then
+    ballPos.X = ClientSize.Width - ballDiameter
+    velX = -Math.Abs(velX)
+End If
+```
+
+#### **Right wall collision**
+- `ballPos.X >= ClientSize.Width - ballDiameter`  
+  The ball’s right edge has reached the right boundary.
+- `ballPos.X = ClientSize.Width - ballDiameter`  
+  Snap it back inside the window.
+- `velX = -Math.Abs(velX)`  
+  Ensures the horizontal velocity becomes **negative**, sending the ball left.
+
+In short: **If the ball hits the right wall, push it left.**
+
+---
+
+### 🧱 Vertical Bounce (Top & Bottom Walls)
+
+```vb
+If ballPos.Y <= 0 Then
+    ballPos.Y = 0
+    velY = Math.Abs(velY)
+```
+
+#### **Top wall collision**
+- `ballPos.Y <= 0`  
+  The ball’s top edge has reached the top boundary.
+- `ballPos.Y = 0`  
+  Snap it back inside.
+- `velY = Math.Abs(velY)`  
+  Ensures vertical velocity becomes **positive**, sending the ball downward.
+
+In short: **If the ball hits the top wall, push it down.**
+
+---
+
+```vb
+ElseIf ballPos.Y >= ClientSize.Height - ballDiameter Then
+    ballPos.Y = ClientSize.Height - ballDiameter
+    velY = -Math.Abs(velY)
+End If
+```
+
+#### **Bottom wall collision**
+- `ballPos.Y >= ClientSize.Height - ballDiameter`  
+  The ball’s bottom edge has reached the bottom boundary.
+- `ballPos.Y = ClientSize.Height - ballDiameter`  
+  Snap it back inside.
+- `velY = -Math.Abs(velY)`  
+  Ensures vertical velocity becomes **negative**, sending the ball upward.
+
+In short: **If the ball hits the bottom wall, push it up.**
+
+---
+
+```vb
+End Sub
+```
+
+Ends the collision‑handling routine.
+
+---
+
+### 🧠 Why this works so well
+
+This collision system is:
+
+- **simple** — no complex physics  
+- **predictable** — always snaps the ball inside the bounds  
+- **stable** — avoids tunneling thanks to dt clamping  
+- **clean** — uses `Math.Abs` to guarantee correct bounce direction  
+
+It’s exactly the kind of logic beginners can understand while still feeling “real” in motion.
+
+---
+
+
+
+
+
+
+
+
+
+
 
 
 
