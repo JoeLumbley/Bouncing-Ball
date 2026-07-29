@@ -2016,7 +2016,7 @@ If fpsTimer.ElapsedMilliseconds >= 1000 Then
 
 This line checks:
 
-> Has at least 1000 ms (1 second) passed since the last FPS update?
+Has at least 1000 ms (1 second) passed since the last FPS update?
 
 If **yes**, it’s time to compute a new FPS value.
 
