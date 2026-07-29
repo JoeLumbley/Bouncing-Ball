@@ -2361,3 +2361,190 @@ This is exactly how you build a robust real‑time animation system in WinForms.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+## *Cleanup — Disposing graphics resources when the form closes*
+
+Windows Forms uses GDI+ objects (Brushes, Fonts, Pens, etc.) that **must be manually disposed**.  
+If you don’t dispose them, they remain in memory until the process exits — which is fine for tiny apps, but bad practice for real‑time graphics.
+
+This cleanup method ensures our animation engine shuts down cleanly.
+
+---
+
+```vb
+Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+```
+
+This method runs **right before the form closes**.
+
+The `Handles Me.FormClosing` part wires it to the form’s closing event.
+
+This is our chance to release resources and stop timers.
+
+---
+
+### 🧹 Dispose Core GDI Resources
+
+```vb
+ballBrush?.Dispose()
+fpsBrush?.Dispose()
+fpsFont?.Dispose()
+physicsTimer?.Dispose()
+```
+
+Each of these objects holds unmanaged resources inside Windows:
+
+#### **ballBrush**
+Used to draw the main ball.
+
+#### **fpsBrush**
+Used to draw the FPS text.
+
+#### **fpsFont**
+Used to render the FPS counter.
+
+#### **physicsTimer**
+Stops the physics loop and releases the timer’s internal handles.
+
+The `?.` operator ensures disposal only happens if the object is not `Nothing`.
+
+In short: **Dispose everything that was created in OnLoad or the constructor.**
+
+---
+
+### 🟦 Dispose Trail Brushes
+
+```vb
+If trailBrushes IsNot Nothing Then
+    For Each b In trailBrushes
+        b?.Dispose()
+    Next
+End If
+```
+
+Our trail uses an array of brushes — one per trail segment.
+
+This loop:
+
+1. Checks if the array exists  
+2. Iterates through each brush  
+3. Disposes it safely  
+
+This prevents dozens of small unmanaged objects from lingering after the form closes.
+
+In short: **Every trail brush is cleaned up properly.**
+
+---
+
+```vb
+End Sub
+```
+
+Ends the cleanup routine.
+
+---
+
+### 🧠 Why this cleanup matters
+
+Even though the app closes immediately afterward, disposing GDI objects is:
+
+- **good practice**  
+- **professional**  
+- **important in long‑running apps**  
+- **important in apps that recreate brushes/fonts often**  
+- **a great example**  
+
+It shows that real‑time graphics require careful resource management.
+
+---
+
+
+
+
+
+
