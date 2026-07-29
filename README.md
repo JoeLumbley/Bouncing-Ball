@@ -169,7 +169,10 @@ Every WinForms form calls this first.
 ---
 
 ```vb
-Me.SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.UserPaint Or ControlStyles.OptimizedDoubleBuffer, True)
+Me.SetStyle(ControlStyles.AllPaintingInWmPaint Or
+            ControlStyles.UserPaint Or
+            ControlStyles.OptimizedDoubleBuffer,
+            True)
 ```
 This line enables three important rendering flags:
 
