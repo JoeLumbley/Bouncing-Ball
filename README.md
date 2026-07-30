@@ -167,7 +167,7 @@ The trail system records the ball’s movement history:
 
 The result is a smooth, tapered comet‑like trail.
 
-[DrawTrail Walkthrough](#updatetrail--recording-the-balls-movement-history)
+[DrawTrail Walkthrough](#drawtrail--rendering-the-fading-motion-trail-behind-the-ball)
 
 ---
 
