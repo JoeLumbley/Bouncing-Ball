@@ -1489,6 +1489,8 @@ Our rendering setup is:
 
 This is exactly how you build a smooth real‑time animation in WinForms.
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 ---
 
 ---
