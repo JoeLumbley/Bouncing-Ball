@@ -284,7 +284,25 @@ Public Class Form1
 
 In short: **This is the main window of your application, and all your animation logic lives inside it.**
 
+[System Summary](#%EF%B8%8F-system-summary)
+
+
+
+
+
+
+
+
 ---
+---
+
+
+
+
+
+
+
+
 
 
 ## *Core Variables*
@@ -378,6 +396,7 @@ Private trailOffsets As Single()
 
 
 
+---
 ---
 
 
@@ -538,6 +557,7 @@ Marks the end of the constructor.
 
 
 
+---
 ---
 
 
@@ -706,6 +726,7 @@ Marks the end of the `OnLoad` method.
 
 
 ---
+---
 
 
 
@@ -853,6 +874,7 @@ Marks the end of the physics update loop.
 
 
 ---
+---
 
 
 
@@ -986,6 +1008,7 @@ It’s exactly the kind of logic that is easy to understand while still feeling 
 
 
 ---
+---
 
 
 
@@ -1082,6 +1105,7 @@ Combined with our precomputed sizes and alpha fading, it produces a **smooth, pr
 
 
 
+---
 ---
 
 
@@ -1253,6 +1277,7 @@ This is exactly how you build a smooth real‑time animation in WinForms.
 
 
 
+---
 ---
 
 
@@ -1440,6 +1465,7 @@ This is exactly how you build a professional‑looking motion trail in WinForms.
 
 
 ---
+---
 
 
 
@@ -1538,6 +1564,7 @@ This separation of responsibilities is exactly what makes our animation engine c
 
 
 
+---
 ---
 
 
@@ -1645,6 +1672,7 @@ It’s a perfect example of how real‑time diagnostics work in animation engine
 
 
 ---
+---
 
 
 
@@ -1741,6 +1769,7 @@ This is exactly how professional WinForms animation engines handle rendering.
 
 
 
+---
 ---
 
 
@@ -1865,6 +1894,7 @@ It’s exactly the kind of diagnostic tool you want in a real‑time animation.
 
 
 
+---
 ---
 
 
@@ -2022,6 +2052,7 @@ This is exactly how you build a robust real‑time animation system in WinForms.
 
 
 
+---
 ---
 
 
