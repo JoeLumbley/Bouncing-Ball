@@ -62,7 +62,6 @@ It’s a introduction to game programming concepts using Windows Forms and VB.NE
 
 ---
 
-[System Summary](#%EF%B8%8F-system-summary)
 
 # ⚙️ **System Summary**  
 *A complete, high‑level overview of how the animation engine works, why each subsystem exists, and how they fit together.*
@@ -426,6 +425,8 @@ Private trailOffsets As Single()
 - **`Private trailLength As Integer = 25`**: Maximum number of trail points (segments) to keep and draw.
 - **`Private trailSizes As Integer()`**: An array holding precomputed sizes (diameters) for each trail segment.
 - **`Private trailOffsets As Single()`**: An array holding precomputed offsets so each trail ellipse is centered relative to the main ball.
+
+[System Summary](#%EF%B8%8F-system-summary)
 
 ---
 
