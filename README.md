@@ -28,38 +28,9 @@ This project is designed to teach:
 It’s a introduction to game programming concepts using Windows Forms and VB.NET.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
+---
+---
 ---
 
 
@@ -269,58 +240,10 @@ This animation engine works beautifully because it follows real graphics‑engin
 
 It’s small, readable, and perfect for learning how real‑time animation works.
 
+
 ---
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 ---
 
 
@@ -589,23 +512,11 @@ Marks the end of the constructor.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
+
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
+---
+---
 
 
 ## *OnLoad - Preparing all graphics resources before the animation begins*
@@ -756,45 +667,17 @@ Marks the end of the `OnLoad` method.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 ---
+---
+---
+---
+
+
+
  
 ## *PhysicsTick — The heartbeat of the animation*
 
@@ -924,53 +807,17 @@ Marks the end of the physics update loop.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
+
+
+
+
+---
 ---
 ---
 ---
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
 
 
 ## *HandleCollisions - Keeping the ball inside the window and bouncing cleanly*
@@ -1088,87 +935,15 @@ It’s exactly the kind of logic that is easy to understand while still feeling 
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 ---
+---
+---
+---
+
+
 
 
 ## *UpdateTrail — Recording the ball’s movement history*
@@ -1248,104 +1023,15 @@ Combined with our precomputed sizes and alpha fading, it produces a **smooth, pr
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 ---
 ---
 ---
-
-
-
-
-
-
 ---
+
+
 
 
 ## *OnPaint — Drawing the entire scene every frame*
@@ -1501,86 +1187,15 @@ This is exactly how you build a smooth real‑time animation in WinForms.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
-
----
----
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 ---
-
-
 ---
+---
+---
+
 
 
 
@@ -1751,64 +1366,15 @@ This is exactly how you build a professional‑looking motion trail in WinForms.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
-
-
-
 
 
 ---
 ---
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
+
+
+
 
 
 ## *DrawBall - Rendering the main ball at its current position*
@@ -1890,87 +1456,15 @@ This separation of responsibilities is exactly what makes our animation engine c
 
 [System Summary](#%EF%B8%8F-system-summary)
 
+
+
+
 ---
 ---
 ---
 ---
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
 
 
 ## *DrawFPS — Rendering the frames‑per‑second counter*
@@ -2059,29 +1553,14 @@ It’s a perfect example of how real‑time diagnostics work in animation engine
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
----
----
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 ---
+---
+---
+---
+
 
 
 ## *OnPaintBackground - Preventing flicker*
@@ -2162,148 +1641,15 @@ This is exactly how professional WinForms animation engines handle rendering.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
----
----
----
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 ---
+---
+---
+---
+
 
  
 ## *UpdateFPS — Measuring and updating the frames‑per‑second value*
@@ -2412,130 +1758,6 @@ It’s exactly the kind of diagnostic tool you want in a real‑time animation.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2546,9 +1768,6 @@ It’s exactly the kind of diagnostic tool you want in a real‑time animation.
 ---
 
 
-
-
----
 
 
 ## *OnResize - Keeping the ball visible when the window changes size*
@@ -2690,97 +1909,16 @@ This is exactly how you build a robust real‑time animation system in WinForms.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 ---
+---
+---
+---
+
+
 
 
 ## *Cleanup — Disposing graphics resources when the form closes*
@@ -2879,125 +2017,12 @@ It shows that real‑time graphics require careful resource management.
 
 [System Summary](#%EF%B8%8F-system-summary)
 
+
+
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
+---
+---
 
 
 
