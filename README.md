@@ -250,6 +250,8 @@ When the form closes:
 
 This prevents memory leaks and cleans up unmanaged GDI resources.
 
+[OnClose Walkthrough](#onresize---keeping-the-ball-visible-when-the-window-changes-size)
+
 ---
 
 #  **Why This Engine Is So Effective**
