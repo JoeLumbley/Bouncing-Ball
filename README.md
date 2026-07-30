@@ -2402,6 +2402,8 @@ Our FPS counter is:
 
 It’s exactly the kind of diagnostic tool you want in a real‑time animation.
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 ---
 
 
