@@ -2547,7 +2547,7 @@ It’s exactly the kind of diagnostic tool you want in a real‑time animation.
 ---
 
 
-## *OnResize - Keeping the ball visable when the window changes size*
+## *OnResize - Keeping the ball visible when the window changes size*
 
 This method runs **every time the form is resized** — whether the user drags the window edges, maximizes it, or restores it.  
 Its job is to keep the ball inside the new bounds and ensure the trail geometry stays correct.
