@@ -146,7 +146,7 @@ The engine checks for collisions with all four window edges:
 
 This creates clean, predictable bouncing behavior.
 
-[Constructor Walkthrough](#constructor)
+[HandleCollisions Walkthrough](#handlecollisions---keeping-the-ball-inside-the-window-and-bouncing-cleanly)
 
 ---
 
