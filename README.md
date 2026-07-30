@@ -12,6 +12,8 @@ As the ball travels, it checks for collisions with the edges of the window. When
 
 The app also includes a simple FPS counter drawn directly onto the form. It updates once per second and shows how many frames were rendered, giving a clear visual indicator of performance.
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 --- 
 
 # 🎓 Learning Objectives
