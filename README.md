@@ -113,11 +113,9 @@ The engine initializes itself in two phases:
 - Precomputes trail sizes and offsets  
 - Starts the physics loop  
 
+[OnLoad Walkthrough](#constructor)
+
 This ensures the engine is fully prepared before the first frame is drawn.
-
-
-
-
 
 ---
 
