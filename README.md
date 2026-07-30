@@ -88,7 +88,7 @@ The engine stores everything it needs to simulate and draw the ball:
 
 These variables form the backbone of the animation.
 
-[Core Variables Walkthrough](#engine-state---core-variables)
+[Core Variables Walkthrough](#core-variables)
 
 
 
@@ -345,7 +345,7 @@ In short: **This is the main window of your application, and all your animation 
 ---
 
 
-## *Engine State - Core Variables*
+## *Core Variables*
 
 
 
