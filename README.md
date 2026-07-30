@@ -104,7 +104,7 @@ The engine initializes itself in two phases:
 - Generates a random direction  
 - Starts the physics and FPS timers  
 
-[Initialization - Constructor Walkthrough](#initialization---constructor)
+[Constructor Walkthrough](#constructor)
 
 ### **OnLoad**
 - Creates all GDI+ resources (brushes, fonts)  
@@ -427,7 +427,7 @@ Private trailOffsets As Single()
 
 ---
 
-## *Initialization - Constructor*
+## *Constructor*
 
 ```vb
 Public Sub New()
