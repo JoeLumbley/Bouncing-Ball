@@ -120,7 +120,7 @@ This ensures the engine is fully prepared before the first frame is drawn.
 
 #  **Physics Loop (Fixed Timestep)**
 
-The physics loop runs every 15 ms (~66 FPS):
+The physics loop runs every 15 ms ( ~ 66 FPS ):
 
 ### **PhysicsTick**
 - Measures delta‑time (`dt`)  
