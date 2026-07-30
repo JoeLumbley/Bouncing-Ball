@@ -91,7 +91,6 @@ These variables form the backbone of the animation.
 [Core Variables Walkthrough](#core-variables)
 
 
-
 ---
 
 #  **Initialization (Constructor + OnLoad)**
@@ -113,9 +112,9 @@ The engine initializes itself in two phases:
 - Precomputes trail sizes and offsets  
 - Starts the physics loop  
 
-[OnLoad Walkthrough](#onload---preparing-all-graphics-resources-before-the-animation-begins)
-
 This ensures the engine is fully prepared before the first frame is drawn.
+
+[OnLoad Walkthrough](#onload---preparing-all-graphics-resources-before-the-animation-begins)
 
 ---
 
