@@ -2148,6 +2148,8 @@ Suppressing it gives you:
 
 This is exactly how professional WinForms animation engines handle rendering.
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 ---
 ---
 ---
