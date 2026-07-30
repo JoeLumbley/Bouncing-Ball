@@ -146,6 +146,8 @@ The engine checks for collisions with all four window edges:
 
 This creates clean, predictable bouncing behavior.
 
+[Constructor Walkthrough](#constructor)
+
 ---
 
 #  **Trail System**
