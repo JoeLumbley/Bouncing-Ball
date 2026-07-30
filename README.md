@@ -1070,6 +1070,8 @@ This collision system is:
 
 It’s exactly the kind of logic that is easy to understand while still feeling “real” in motion.
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 ---
 
 
