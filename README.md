@@ -1233,6 +1233,8 @@ This trail system is intentionally simple:
 
 Combined with our precomputed sizes and alpha fading, it produces a **smooth, professional‑looking motion trail** with minimal CPU overhead.
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 ---
 
 
