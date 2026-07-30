@@ -589,7 +589,7 @@ Marks the end of the constructor.
 
 
 
-## *OnLoad — Preparing all graphics resources before the animation begins*
+## *OnLoad - Preparing all graphics resources before the animation begins*
 
 `OnLoad` runs **once**, right after the form is created and just before it becomes visible.  
 This is the perfect place to initialize brushes, fonts, trail arrays, and anything that depends on the form’s size.
