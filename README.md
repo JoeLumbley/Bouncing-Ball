@@ -14,6 +14,8 @@ The app also includes a simple FPS counter drawn directly onto the form. It upda
 
 [System Summary](#%EF%B8%8F-system-summary)
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 
 
 
@@ -259,10 +261,22 @@ This animation engine works beautifully because it follows real graphics‑engin
 It’s small, readable, and perfect for learning how real‑time animation works.
 
 
+
+
+
+
+
+
 ---
 ---
 ---
 ---
+
+
+
+
+
+
 
 
 # Code Walkthrough  
