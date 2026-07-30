@@ -2051,6 +2051,8 @@ Our FPS counter is:
 
 It’s a perfect example of how real‑time diagnostics work in animation engines.
 
+[System Summary](#%EF%B8%8F-system-summary)
+
 ---
 ---
 ---
