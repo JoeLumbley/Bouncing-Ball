@@ -2072,7 +2072,7 @@ It’s a perfect example of how real‑time diagnostics work in animation engine
 ---
 
 
-## *OnPaintBackground — Preventing flicker by suppressing default background painting*
+## *OnPaintBackground - Preventing flicker*
 
 Windows Forms normally repaints the background before drawing the foreground.  
 For static apps, that’s fine.  
