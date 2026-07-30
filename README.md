@@ -1734,6 +1734,9 @@ Your trail system combines:
 
 This is exactly how you build a professional‑looking motion trail in WinForms.
 
+
+[System Summary](#%EF%B8%8F-system-summary)
+
 ---
 
 
