@@ -62,7 +62,7 @@ It’s a introduction to game programming concepts using Windows Forms and VB.NE
 
 ---
 
-[Engine State - Core Variables Walkthrough](#engine-state---core-variables)
+[System Summary](#%EF%B8%8F-system-summary)
 
 # ⚙️ **System Summary**  
 *A complete, high‑level overview of how the animation engine works, why each subsystem exists, and how they fit together.*
