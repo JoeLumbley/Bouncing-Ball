@@ -220,7 +220,7 @@ The FPS system measures how many frames occur per second:
 
 This gives real‑time performance feedback.
 
-[DrawFPS Walkthrough](#onpaintbackground---preventing-flicker)
+[DrawFPS Walkthrough](#drawfps--rendering-the-framespersecond-counter)
 
 ---
 
