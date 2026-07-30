@@ -213,7 +213,7 @@ The FPS system measures how many frames occur per second:
   - Reset counter  
   - Restart stopwatch  
 
-[UpdateFPS Walkthrough](#onpaintbackground---preventing-flicker)
+[UpdateFPS Walkthrough](#updatefps--measuring-and-updating-the-framespersecond-value)
 
 ### **DrawFPS**
 - Draws the FPS text in the top‑left corner  
