@@ -158,7 +158,7 @@ The trail system records the ball’s movement history:
 - Adds the current ball position  
 - Removes the oldest entry when the list exceeds its max length  
 
-[UpdateTrail Walkthrough](#physicstick--the-heartbeat-of-the-animation)
+[UpdateTrail Walkthrough](#updatetrail--recording-the-balls-movement-history)
 
 ### **DrawTrail**
 - Uses precomputed sizes and offsets  
