@@ -1811,7 +1811,7 @@ This is exactly how you build a professional‑looking motion trail in WinForms.
 ---
 
 
-## *DrawBall — Rendering the main ball at its current position*
+## *DrawBall - Rendering the main ball at its current position*
 
 This method draws the ball itself.  
 It’s intentionally simple: one brush, one ellipse, one position.  
@@ -1887,6 +1887,8 @@ All the heavy lifting happens elsewhere:
 By the time `DrawBall` runs, everything is ready — it just draws the final circle.
 
 This separation of responsibilities is exactly what makes our animation engine clean and easy to extend.
+
+[System Summary](#%EF%B8%8F-system-summary)
 
 ---
 ---
@@ -2874,6 +2876,8 @@ Even though the app closes immediately afterward, disposing GDI objects is:
 - **a great example**  
 
 It shows that real‑time graphics require careful resource management.
+
+[System Summary](#%EF%B8%8F-system-summary)
 
 ---
 
