@@ -132,6 +132,8 @@ The physics loop runs every 15 ms (~66 FPS):
 
 This loop is the **heartbeat** of the animation.
 
+[Physics Loop Walkthrough](#onload---preparing-all-graphics-resources-before-the-animation-begins)
+
 ---
 
 #  **Collision Handling**
