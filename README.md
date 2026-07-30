@@ -235,7 +235,7 @@ When the window is resized:
 
 This keeps the engine stable and visually correct during window resizing.
 
-[OnResize Walkthrough](#onresize--keeping-the-ball-and-trail-consistent-when-the-window-changes-size)
+[OnResize Walkthrough](#onresize---keeping-the-ball-visible-when-the-window-changes-size)
 
 ---
 
