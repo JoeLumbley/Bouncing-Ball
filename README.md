@@ -198,6 +198,8 @@ This layering keeps the trail behind the ball and the FPS counter on top.
 
 This is essential for smooth animation.
 
+[OnPaintBackground Walkthrough](#onpaint--drawing-the-entire-scene-every-frame)
+
 ---
 
 #  **FPS Counter**
