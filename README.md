@@ -2547,7 +2547,7 @@ It’s exactly the kind of diagnostic tool you want in a real‑time animation.
 ---
 
 
-## *OnResize — Keeping the ball and trail consistent when the window changes size*
+## *OnResize - Keeping the ball visable when the window changes size*
 
 This method runs **every time the form is resized** — whether the user drags the window edges, maximizes it, or restores it.  
 Its job is to keep the ball inside the new bounds and ensure the trail geometry stays correct.
@@ -2683,6 +2683,8 @@ Our animation engine stays stable because:
 - it triggers a redraw so the scene updates instantly  
 
 This is exactly how you build a robust real‑time animation system in WinForms.
+
+[System Summary](#%EF%B8%8F-system-summary)
 
 ---
 
