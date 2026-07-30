@@ -235,6 +235,8 @@ When the window is resized:
 
 This keeps the engine stable and visually correct during window resizing.
 
+[OnResize Walkthrough](#drawfps--rendering-the-framespersecond-counter)
+
 ---
 
 #  **Cleanup**
