@@ -190,7 +190,7 @@ These ensure the animation looks crisp and professional.
 
 This layering keeps the trail behind the ball and the FPS counter on top.
 
-[OnPaint Walkthrough](#drawtrail--rendering-the-fading-motion-trail-behind-the-ball)
+[OnPaint Walkthrough](#onpaint--drawing-the-entire-scene-every-frame)
 
 ### **OnPaintBackground**
 - Suppressed to eliminate flicker  
