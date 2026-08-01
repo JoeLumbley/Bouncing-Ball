@@ -29,7 +29,9 @@ Public Class Form1
     '  Engine State
     ' -------------------------------
     Private ballPos As PointF
-    Private ballDiameter As Integer = 80
+    'Private ballDiameter As Integer = 80
+    Private ballDiameter As Integer = 60
+
 
     Private velX As Double
     Private velY As Double
