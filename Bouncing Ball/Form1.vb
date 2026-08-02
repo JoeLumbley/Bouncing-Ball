@@ -21,6 +21,7 @@
 ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ' SOFTWARE.
 
+
 Imports System.Drawing.Drawing2D
 
 Public Class Form1
@@ -63,6 +64,12 @@ Public Class Form1
     Private trailSizes As Integer()
     Private trailOffsets As Single()
 
+    Private lastPlay As New Dictionary(Of String, Double)
+
+    Private trailAlpha As Integer()
+
+
+
     Public Sub New()
         InitializeComponent()
 
@@ -72,6 +79,8 @@ Public Class Form1
 
         Me.DoubleBuffered = True
         Me.BackColor = Color.Black
+        Me.StartPosition = FormStartPosition.CenterScreen
+        Me.WindowState = FormWindowState.Maximized
 
         ' Center ball
         ballPos = New PointF((ClientSize.Width - ballDiameter) / 2,
@@ -89,21 +98,34 @@ Public Class Form1
 
         sw.Start()
         fpsTimer.Start()
+
     End Sub
 
     Protected Overrides Sub OnLoad(e As EventArgs)
         MyBase.OnLoad(e)
+
+        InitGraphics()
+        InitTrails()
+        InitPhysics()
+
+    End Sub
+
+    Private Sub InitPhysics()
+
+        physicsTimer.Start()
+
+    End Sub
+
+    Private Sub InitGraphics()
 
         ' Core GDI resources
         ballBrush = New SolidBrush(Color.DeepSkyBlue)
         fpsBrush = New SolidBrush(Color.White)
         fpsFont = New Font("Segoe UI", 14, FontStyle.Bold)
 
-        ' Preallocate trail brushes
-        trailBrushes = New SolidBrush(trailLength - 1) {}
-        For i As Integer = 0 To trailLength - 1
-            trailBrushes(i) = New SolidBrush(Color.FromArgb(0, 0, 191, 255))
-        Next
+    End Sub
+
+    Private Sub InitTrails()
 
         ' Precompute trail sizes and offsets
         trailSizes = New Integer(trailLength - 1) {}
@@ -117,8 +139,21 @@ Public Class Form1
             trailOffsets(i) = CSng((ballDiameter - size) / 2)
         Next
 
-        physicsTimer.Start()
+        ' Precompute trail alpha values for exponential fade
+        trailAlpha = New Integer(trailLength - 1) {}
+        For i As Integer = 0 To trailLength - 1
+            Dim t As Double = i / trailLength
+            trailAlpha(i) = CInt(32 * t * t)   ' your exponential fade
+        Next
+
+        ' Preallocate trail brushes
+        trailBrushes = New SolidBrush(trailLength - 1) {}
+        For i As Integer = 0 To trailLength - 1
+            trailBrushes(i) = New SolidBrush(Color.FromArgb(trailAlpha(i), 0, 191, 255))
+        Next
+
     End Sub
+
 
     ' -------------------------------
     '  Physics Loop (Fixed Timestep)
@@ -137,6 +172,7 @@ Public Class Form1
         UpdateTrail()
 
         Invalidate()
+
     End Sub
 
     Private Sub HandleCollisions()
@@ -145,21 +181,27 @@ Public Class Form1
         If ballPos.X <= 0 Then
             ballPos.X = 0
             velX = Math.Abs(velX)
+
         ElseIf ballPos.X >= ClientSize.Width - ballDiameter Then
             ballPos.X = ClientSize.Width - ballDiameter
             velX = -Math.Abs(velX)
+
         End If
 
         ' Vertical bounce
         If ballPos.Y <= 0 Then
             ballPos.Y = 0
             velY = Math.Abs(velY)
+
+
         ElseIf ballPos.Y >= ClientSize.Height - ballDiameter Then
             ballPos.Y = ClientSize.Height - ballDiameter
             velY = -Math.Abs(velY)
+
         End If
 
     End Sub
+
 
     ' -------------------------------
     '  Trail Update
@@ -187,6 +229,7 @@ Public Class Form1
         DrawTrail(g)
         DrawBall(g)
         DrawFPS(g)
+
     End Sub
 
     Private Sub DrawTrail(g As Graphics)
@@ -195,22 +238,15 @@ Public Class Form1
 
         For i As Integer = 0 To count - 1
 
-            ' Smooth exponential fade
-            Dim t As Double = i / trailLength
-            Dim alpha As Integer = CInt(32 * t * t)
-            If alpha > 255 Then alpha = 255
-
-            trailBrushes(i).Color = Color.FromArgb(alpha, 0, 191, 255)
-
             Dim p As PointF = trail(i)
             Dim size As Integer = trailSizes(i)
             Dim offset As Single = trailOffsets(i)
 
             g.FillEllipse(trailBrushes(i),
-                          p.X + offset,
-                          p.Y + offset,
-                          size,
-                          size)
+                      p.X + offset,
+                      p.Y + offset,
+                      size,
+                      size)
         Next
 
     End Sub
@@ -287,6 +323,27 @@ Public Class Form1
             Next
         End If
 
+        'AudioPlayer.CloseAll()
+
     End Sub
+
+    Private Sub CreateFileFromResource(filepath As String, resource As Byte())
+
+        Try
+
+            If Not IO.File.Exists(filepath) Then
+
+                IO.File.WriteAllBytes(filepath, resource)
+
+            End If
+
+        Catch ex As Exception
+
+            Debug.Print($"Error creating file: {ex.Message}")
+
+        End Try
+
+    End Sub
+
 
 End Class
