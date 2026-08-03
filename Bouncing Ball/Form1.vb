@@ -160,6 +160,11 @@ Public Class Form1
     ' -------------------------------
     Private Sub PhysicsTick(sender As Object, e As EventArgs)
 
+        If Me.WindowState = FormWindowState.Minimized Then
+            Return
+        End If
+
+
         Dim dt As Double = sw.Elapsed.TotalSeconds
         sw.Restart()
 
@@ -283,6 +288,11 @@ Public Class Form1
 
     Protected Overrides Sub OnResize(e As EventArgs)
         MyBase.OnResize(e)
+
+        If Me.WindowState = FormWindowState.Minimized Then
+            Return
+        End If
+
 
         ' Ignore resize until resources are initialized
         If trailSizes Is Nothing OrElse trailOffsets Is Nothing Then
