@@ -64,7 +64,7 @@ Below is the full architecture broken into its major subsystems.
 
 ---
 
-#  **Engine State (Core Variables)**
+#  **Engine State ( Core Variables )**
 
 The engine stores everything it needs to simulate and draw the ball:
 
@@ -84,7 +84,7 @@ These variables form the backbone of the animation.
 
 ---
 
-#  **Initialization (Constructor + OnLoad)**
+#  **Initialization ( Constructor + OnLoad )**
 
 The engine initializes itself in two phases:
 
@@ -98,7 +98,7 @@ The engine initializes itself in two phases:
 [Constructor Walkthrough](#constructor)
 
 ### **OnLoad**
-- Creates all GDI+ resources (brushes, fonts)  
+- Creates all GDI+ resources ( brushes, fonts )  
 - Preallocates trail brushes  
 - Precomputes trail sizes and offsets  
 - Starts the physics loop  
@@ -109,7 +109,7 @@ This ensures the engine is fully prepared before the first frame is drawn.
 
 ---
 
-#  **Physics Loop (Fixed Timestep)**
+#  **Physics Loop ( Fixed Timestep )**
 
 The physics loop runs every 15 ms ( ~ 66 FPS ):
 
