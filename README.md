@@ -1290,10 +1290,10 @@ Ends the rendering routine.
 
 Our rendering setup is:
 
-- **clean** — separated into small draw functions  
-- **efficient** — uses preallocated brushes and precomputed sizes  
-- **high‑quality** — uses all the right GDI+ smoothing modes  
-- **flicker‑free** — thanks to double‑buffering and suppressed background painting  
+- **clean** - separated into small draw functions  
+- **efficient** - uses preallocated brushes and precomputed sizes  
+- **high‑quality** - uses all the right GDI+ smoothing modes  
+- **flicker‑free** - thanks to double‑buffering and suppressed background painting  
 
 This is exactly how you build a smooth real‑time animation in WinForms.
 
