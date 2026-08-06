@@ -1606,7 +1606,7 @@ This separation of responsibilities is exactly what makes our animation engine c
 
 
 
-## *DrawFPS — Rendering the frames‑per‑second counter*
+## *DrawFPS - Rendering the frames‑per‑second counter*
 
 This method draws the FPS counter in the top‑left corner of the screen.  
 It updates the FPS value once per second, then renders it using our preloaded font and brush.
