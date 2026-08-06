@@ -1378,12 +1378,12 @@ Dim alpha As Integer = CInt(32 * t * t)
 If alpha > 255 Then alpha = 255
 ```
 
-This computes the transparency (alpha) for each trail segment.
+This computes the transparency ( alpha ) for each trail segment.
 
 ### How it works:
 
 - `t = i / trailLength`  
-  Gives a value between **0.0** (oldest) and **1.0** (newest).
+  Gives a value between **0.0** ( oldest ) and **1.0** ( newest ).
 
 - `t * t`  
   Squares the value, creating an **exponential curve**.  
@@ -1458,7 +1458,7 @@ This creates the layered, fading trail effect.
 Next
 ```
 
-Ends the loop — all trail segments have now been drawn.
+Ends the loop - all trail segments have now been drawn.
 
 ---
 
@@ -1510,7 +1510,7 @@ This is exactly how you build a professional‑looking motion trail in WinForms.
 
 This method draws the ball itself.  
 It’s intentionally simple: one brush, one ellipse, one position.  
-All the complexity (physics, trail, smoothing) happens elsewhere — this is the final visual step.
+All the complexity ( physics, trail, smoothing ) happens elsewhere - this is the final visual step.
 
 
 
@@ -1540,7 +1540,7 @@ This single line draws the ball:
 ### **ballBrush**
 - The solid brush created in `OnLoad`
 - Uses the color `DeepSkyBlue`
-- No transparency — the ball is fully opaque
+- No transparency - the ball is fully opaque
 
 ### **ballPos.X / ballPos.Y**
 - The current position of the ball
@@ -1579,7 +1579,7 @@ All the heavy lifting happens elsewhere:
 - DrawTrail renders the fading trail  
 - OnPaint sets up high‑quality rendering modes  
 
-By the time `DrawBall` runs, everything is ready — it just draws the final circle.
+By the time `DrawBall` runs, everything is ready to draw the final circle.
 
 This separation of responsibilities is exactly what makes our animation engine clean and easy to extend.
 
