@@ -308,8 +308,8 @@ Public Class Form1
 ```
 
 - This begins the definition of your Windows Forms class.
-- `Form1` inherits from `System.Windows.Forms.Form` (implicitly).
-- Everything that follows—fields, methods, event handlers—belongs to this form.
+- `Form1` inherits from `System.Windows.Forms.Form` ( implicitly ).
+- Everything that follows: fields, methods, event handlers, belongs to this form.
 - When the program runs, this class becomes the window the user sees.
 
 In short: **This is the main window of your application, and all your animation logic lives inside it.**
@@ -358,11 +358,11 @@ Private sw As New Stopwatch()
 - **Comment block (Engine State):** Just a visual separator in the code, labeling the next section as “Engine State”.
 - **`Private ballPos As PointF`**: Declares a private field that stores the ball’s current position as a 2D point (`X`, `Y`).
 - **`Private ballDiameter As Integer = 80`**: Declares the ball’s diameter in pixels and initializes it to `80`.
-- **`Private velX As Double`**: Declares the horizontal velocity component of the ball (pixels per second).
-- **`Private velY As Double`**: Declares the vertical velocity component of the ball (pixels per second).
-- **`Private speed As Double = 450`**: Declares a base speed value (magnitude) for the ball’s movement and initializes it to `450`.
-- **`Private physicsTimer As New Timer()`**: Creates a `Timer` that will drive the physics updates (the fixed‑timestep loop).
-- **`Private sw As New Stopwatch()`**: Creates a `Stopwatch` used to measure elapsed time between physics ticks (for `dt`).
+- **`Private velX As Double`**: Declares the horizontal velocity component of the ball ( pixels per second ).
+- **`Private velY As Double`**: Declares the vertical velocity component of the ball ( pixels per second ).
+- **`Private speed As Double = 450`**: Declares a base speed value ( magnitude ) for the ball’s movement and initializes it to `450`.
+- **`Private physicsTimer As New Timer()`**: Creates a `Timer` that will drive the physics updates ( the fixed‑timestep loop ).
+- **`Private sw As New Stopwatch()`**: Creates a `Stopwatch` used to measure elapsed time between physics ticks ( for `dt`).
 
 ---
 
@@ -375,7 +375,7 @@ Private fps As Integer = 0
 Private fpsTimer As New Stopwatch()
 ```
 
-- **Comment block (FPS Tracking):** Labels this section as related to frames‑per‑second tracking.
+- **Comment block ( FPS Tracking ):** Labels this section as related to frames‑per‑second tracking.
 - **`Private frameCount As Integer = 0`**: Counts how many frames have been rendered in the current one‑second window.
 - **`Private fps As Integer = 0`**: Stores the calculated FPS value that will be displayed on screen.
 - **`Private fpsTimer As New Stopwatch()`**: Measures time to know when one second has passed so FPS can be updated.
@@ -392,7 +392,7 @@ Private fpsFont As Font
 Private trailBrushes As SolidBrush()
 ```
 
-- **Comment block (GDI Resources):** Marks the section for drawing resources.
+- **Comment block ( GDI Resources ):** Marks the section for drawing resources.
 - **`Private ballBrush As SolidBrush`**: Brush used to fill the ball when drawing.
 - **`Private fpsBrush As SolidBrush`**: Brush used to draw the FPS text.
 - **`Private fpsFont As Font`**: Font used for the FPS text rendering.
@@ -410,10 +410,10 @@ Private trailSizes As Integer()
 Private trailOffsets As Single()
 ```
 
-- **Comment block (Trail System):** Labels the section for the motion trail behind the ball.
+- **Comment block ( Trail System ):** Labels the section for the motion trail behind the ball.
 - **`Private trail As New List(Of PointF)`**: A list storing past positions of the ball to render the trail.
-- **`Private trailLength As Integer = 25`**: Maximum number of trail points (segments) to keep and draw.
-- **`Private trailSizes As Integer()`**: An array holding precomputed sizes (diameters) for each trail segment.
+- **`Private trailLength As Integer = 25`**: Maximum number of trail points ( segments ) to keep and draw.
+- **`Private trailSizes As Integer()`**: An array holding precomputed sizes ( diameters ) for each trail segment.
 - **`Private trailOffsets As Single()`**: An array holding precomputed offsets so each trail ellipse is centered relative to the main ball.
 
 [System Summary](#%EF%B8%8F-system-summary)
