@@ -27,6 +27,8 @@ Public Class RenderingEngine
         g.SmoothingMode = SmoothingMode.AntiAlias
         g.PixelOffsetMode = PixelOffsetMode.HighQuality
         g.InterpolationMode = InterpolationMode.HighQualityBicubic
+        g.PixelOffsetMode = PixelOffsetMode.HighQuality
+        g.CompositingQuality = CompositingQuality.GammaCorrected
 
         trailRenderer.Draw(g, trail, model.Diameter)
         ballRenderer.Draw(g, model)

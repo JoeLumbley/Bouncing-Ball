@@ -2,6 +2,10 @@
 
     Private ReadOnly model As BallModel
 
+
+    Private ReadOnly rng As New Random()
+
+
     Public Sub New(model As BallModel)
 
         Me.model = model
@@ -63,6 +67,23 @@
                 -Math.Abs(model.Velocity.Y))
 
         End If
+
+    End Sub
+
+
+
+
+    Public Sub CenterBallAndLaunch(clientSize As Size)
+
+        model.Position = New PointF(
+            (clientSize.Width - model.Diameter) / 2.0F,
+            (clientSize.Height - model.Diameter) / 2.0F)
+
+        Dim angle As Double = rng.NextDouble() * Math.PI * 2
+
+        model.Velocity = New PointF(
+            CSng(Math.Cos(angle) * model.Speed),
+            CSng(Math.Sin(angle) * model.Speed))
 
     End Sub
 
