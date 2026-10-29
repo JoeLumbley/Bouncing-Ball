@@ -23,16 +23,45 @@ Public Class RenderingEngine
         trail As BallTrail,
         fps As FpsCounter)
 
-        g.CompositingMode = CompositingMode.SourceOver
-        g.SmoothingMode = SmoothingMode.AntiAlias
-        g.PixelOffsetMode = PixelOffsetMode.HighQuality
-        g.InterpolationMode = InterpolationMode.HighQualityBicubic
-        g.PixelOffsetMode = PixelOffsetMode.HighQuality
-        g.CompositingQuality = CompositingQuality.GammaCorrected
+
+        ConfigureGraphics(g)
+
+
+        DrawBackground(g)
 
         trailRenderer.Draw(g, trail, model.Diameter)
         ballRenderer.Draw(g, model)
         fpsRenderer.Draw(g, fps)
+
+    End Sub
+
+    Private Shared Sub ConfigureGraphics(
+        g As Graphics)
+
+        g.CompositingMode = CompositingMode.SourceOver
+        g.SmoothingMode = SmoothingMode.AntiAlias
+        g.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+        g.InterpolationMode = InterpolationMode.HighQualityBicubic
+        g.CompositingQuality = CompositingQuality.GammaCorrected
+        g.PixelOffsetMode = PixelOffsetMode.HighQuality
+
+    End Sub
+
+
+    Private Shared Sub DrawBackground(
+        g As Graphics)
+
+        Using backgroundBrush As New LinearGradientBrush(
+            New RectangleF(g.VisibleClipBounds),
+            Color.FromArgb(25, 25, 25),
+            Color.Black,
+            LinearGradientMode.Vertical)
+
+            g.FillRectangle(
+                backgroundBrush,
+                g.VisibleClipBounds)
+
+        End Using
 
     End Sub
 

@@ -107,20 +107,22 @@ Public Class Form1
 
         model = New BallModel()
 
-        model.Position =
-            New PointF(
-                (ClientSize.Width - model.Diameter) / 2,
-                (ClientSize.Height - model.Diameter) / 2)
+        'model.Position =
+        '    New PointF(
+        '        (ClientSize.Width - model.Diameter) / 2,
+        '        (ClientSize.Height - model.Diameter) / 2)
 
-        Dim rnd As New Random()
+        'Dim rnd As New Random()
 
-        Dim angle =
-            rnd.NextDouble() * Math.PI * 2
+        'Dim angle =
+        '    rnd.NextDouble() * Math.PI * 2
 
-        model.Velocity =
-            New PointF(
-                CSng(Math.Cos(angle) * model.Speed),
-                CSng(Math.Sin(angle) * model.Speed))
+        'model.Velocity =
+        '    New PointF(
+        '        CSng(Math.Cos(angle) * model.Speed),
+        '        CSng(Math.Sin(angle) * model.Speed))
+
+
 
         Dim trailLength As Integer = 15
 
@@ -151,6 +153,10 @@ Public Class Form1
 
         physicsTimer?.Start()
 
+
+        physics.CenterBallAndLaunch(Me.Size)
+
+
     End Sub
 
     Private Sub PhysicsTick(
@@ -160,8 +166,8 @@ Public Class Form1
         Dim dt = loopClock?.GetDeltaTime()
 
         physics?.Update(dt, ClientSize)
+        trail.Update(model.Position)
 
-        trail?.Update(model.Position)
 
         Invalidate()
 
@@ -195,6 +201,7 @@ Public Class Form1
 
         If WindowState <> FormWindowState.Minimized Then
             physics?.CenterBallAndLaunch(ClientSize)
+            trail.Clear()
         End If
 
     End Sub
@@ -220,6 +227,15 @@ Public Class Form1
 
     End Sub
 
+    Protected Overrides Sub OnFormClosing(e As FormClosingEventArgs)
 
+        physicsTimer?.Stop()
+        physicsTimer?.Dispose()
+
+        graphicsResources?.Dispose()
+
+        MyBase.OnFormClosing(e)
+
+    End Sub
 
 End Class

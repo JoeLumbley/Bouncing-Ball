@@ -25,4 +25,11 @@
         End Get
     End Property
 
+
+    Public Sub Clear()
+
+        points.Clear()
+
+    End Sub
+
 End Class
