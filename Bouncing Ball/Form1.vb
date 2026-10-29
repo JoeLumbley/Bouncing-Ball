@@ -357,6 +357,51 @@ Public Class Form1
 
     Private physicsTimer As Timer
 
+
+    Private windowManager As WindowManager
+
+
+    Private fullscreenKeyDown As Boolean
+
+    Protected Overrides Sub OnKeyDown(e As KeyEventArgs)
+
+        MyBase.OnKeyDown(e)
+
+        If fullscreenKeyDown Then
+            Return
+        End If
+
+        fullscreenKeyDown = True
+
+        windowManager.ToggleFullscreen()
+
+    End Sub
+
+    Protected Overrides Sub OnKeyUp(e As KeyEventArgs)
+
+        MyBase.OnKeyUp(e)
+
+        If e.KeyCode = Keys.F11 OrElse
+       e.KeyCode = Keys.F Then
+
+            fullscreenKeyDown = False
+
+        End If
+
+    End Sub
+
+    Protected Overrides Sub OnLoad(e As EventArgs)
+
+        MyBase.OnLoad(e)
+
+        windowManager = New WindowManager(Me)
+        windowManager.Initialize()
+
+        InitializeSystems()
+
+
+    End Sub
+
     Public Sub New()
 
         InitializeComponent()
@@ -373,13 +418,13 @@ Public Class Form1
 
     End Sub
 
-    Protected Overrides Sub OnLoad(e As EventArgs)
+    'Protected Overrides Sub OnLoad(e As EventArgs)
 
-        MyBase.OnLoad(e)
+    '    MyBase.OnLoad(e)
 
-        InitializeSystems()
+    '    InitializeSystems()
 
-    End Sub
+    'End Sub
 
     Private Sub InitializeSystems()
 
@@ -462,5 +507,62 @@ Public Class Form1
         pevent As PaintEventArgs)
 
     End Sub
+
+
+    'Protected Overrides Sub OnKeyDown(e As KeyEventArgs)
+
+    '    MyBase.OnKeyDown(e)
+
+    '    If e.KeyCode = Keys.F11 OrElse e.KeyCode = Keys.F Then
+    '        windowManager.ToggleFullscreen()
+    '    End If
+
+    'End Sub
+
+
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+
+    '    Const WM_SETTINGCHANGE As Integer = &H1A
+
+    '    If m.Msg = WM_SETTINGCHANGE Then
+
+    '        If windowManager IsNot Nothing Then
+    '            windowManager.ApplySystemTheme()
+    '        End If
+
+    '    End If
+
+    '    MyBase.WndProc(m)
+
+    'End Sub
+
+
+
+    ' ============================================================
+    '  SYSTEM THEME CHANGE DETECTION
+    '
+    '  Windows sends WM_SETTINGCHANGE whenever a system setting
+    '  changes. We use this notification to detect Light/Dark
+    '  theme changes and update the title bar appearance without
+    '  requiring the application to restart.
+    ' ============================================================
+    Protected Overrides Sub WndProc(ByRef m As Message)
+
+        Const WM_SETTINGCHANGE As Integer = &H1A
+
+        If m.Msg = WM_SETTINGCHANGE Then
+
+            ' Reapply the current system theme to the window.
+            If windowManager IsNot Nothing Then
+                windowManager.ApplySystemTheme()
+            End If
+
+        End If
+
+        MyBase.WndProc(m)
+
+    End Sub
+
+
 
 End Class
